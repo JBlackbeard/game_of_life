@@ -1,4 +1,4 @@
-# game_of_life
+# Game of Life
 
 This is a version of Game of Life, or just *Life*. 
 It is not really a game, since there is no winning, losing or actual competition going on. It's an instance of a so-called *cellular automaton*, a system of cells that exist on a grid, where they live, die and evolve according to the rules that govern their world. 
