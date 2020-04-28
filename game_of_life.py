@@ -160,7 +160,13 @@ def main(window):
         c = window.getch()
         if c == ord('q'):
             break  # Exit the while loop
-        sleep(0.05)
+        sleep(0.1)
 
 if __name__ == "__main__":
     curses.wrapper(main)
+
+
+#@TODO: load files from conwaylife.com: e.g. be able to have Gosper Glider Gun as input
+#@TODO: implement Langton's ant
+#@TODO: implement Day & Night
+#@TODO: let the user decide via command line which version to run
