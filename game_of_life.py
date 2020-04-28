@@ -53,7 +53,7 @@ def render(game_state):
     output = ""
     for x in range(game_state.shape[0]):
         for y in range(game_state.shape[1]):
-            output += u"\u2588" if game_state[x][y] == 1 else " "
+            output += "\u2588" if game_state[x][y] == 1 else " " 
         output+="\n"
 
     #print(output)
@@ -83,6 +83,7 @@ def cell_decision(alive, neighbor_count, death_count = [0,1], stay_count = [2,3]
     Returns:
         0 or 1 -- returns 0 if cell is dead, 1 otherwise
     """
+
     if alive:
         if neighbor_count in death_count or neighbor_count > max(stay_count):
             return 0
@@ -140,13 +141,26 @@ def next_board_state(cur_state):
 # 4. run the game forever 
 def main(window):
     initial_state = random_state(os.get_terminal_size().lines-1, os.get_terminal_size().columns-1)
+    curses.init_pair(1, curses.COLOR_RED, curses.COLOR_BLACK)
+
     state = next_board_state(initial_state)
-    window.addstr(render(state))
+    window.addstr(render(state), curses.color_pair(1))
     window.refresh()
+
+    # enables us to wait for user input without stopping the program
+    window.nodelay(True)
+
     while True:
         window.clear()
         state = next_board_state(state)
-        window.addstr(render(state))
+        window.addstr(render(state), curses.color_pair(1))
         window.refresh()
+
+        # check if user wants to cancel the program by hitting 'q'
+        c = window.getch()
+        if c == ord('q'):
+            break  # Exit the while loop
         sleep(0.05)
-curses.wrapper(main)
+
+if __name__ == "__main__":
+    curses.wrapper(main)
