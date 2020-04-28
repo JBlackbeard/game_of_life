@@ -12,5 +12,5 @@ The cell then updates its own liveness according to 4 rules:
 4. Any dead cell with exactly 3 live neighbors transitions to a living state, through reproduction
 
 
-![](/imgs/game_of_life.gif)
+![Game of Life](/imgs/game_of_life.gif)
 
